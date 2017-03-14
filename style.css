@@ -1,0 +1,14 @@
+.app--wrapper {
+    text-align: center;
+}
+
+.cat {
+    display: inline-block;
+    width: 40%;
+}
+
+.pic--cat {
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 1rem;
+}
