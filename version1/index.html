@@ -22,18 +22,15 @@
        <h1 class="h1">Click on a Cat</h1>
        <p id="count">00</p>
    </div>
-   
-   
-   
-   
-   
-   
     <script>
         const catPic = document.getElementById('catPic');
-        function counter() {
-            console.log(this);
+        const count = document.getElementById('count');
+        var counter = 0;
+        function counterClicks() {
+            counter++;
+            count.textContent = counter;
         }
-        catPic.addEventListener('click', counter);
+        catPic.addEventListener('click', counterClicks);
     </script>
 </body>
 </html>
