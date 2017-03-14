@@ -3,7 +3,7 @@ Cat clicker app
 
 Project Requirements for Cat Clicker
 
-Visuals
+Visuals  
 The application should display a picture of a cat and a number of clicks.  
 The specifics of the layout do not matter, so style it however you'd like.  
 
