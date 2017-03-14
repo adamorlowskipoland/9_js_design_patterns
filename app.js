@@ -1,14 +1,40 @@
-//const catPics = document.querySelectorAll('.pic--cat');
-//const count = document.getElementById('count');
-//var counter = 0;
-//
-//function clicksCounter() {
-////    console.log(this);
-//    counter++;
-//    count.textContent = counter;
-//}
-//
-//catPics.forEach(cat => cat.addEventListener('click', clicksCounter));
+var nums = [];
+console.log(nums);
+
+const catPics = document.querySelectorAll('.cat__pic');
+const countPs = document.querySelectorAll('.count');
+
+console.log(catPics);
+console.log(countPs);
+
+var counter = 0;
+
+function clicksCounter() {
+//    console.log(this.dataset.pic);
+    
+    counter++;
+    
+    var p = countPs[this.dataset.pic];
+    var pDataCount = p.dataset.count;
+    nums[pDataCount] = counter;
+    
+    console.log(pDataCount);
+    p.textContent = counter;
+//    console.log(p.dataset.count);
+    
+    console.log(counter);
+    console.log(nums);
+}
+
+catPics.forEach(cat => cat.addEventListener('click', clicksCounter));
+
+
+
+
+
+
+
+
 
 
 // building slider
