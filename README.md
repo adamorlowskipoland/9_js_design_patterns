@@ -1,7 +1,9 @@
 # 9_js_design_patterns
 Cat clicker app
 
-Project Requirements for Cat Clicker
+Project Requirements for Cat Clicker  
+
+Varsion 1  
 
 Visuals  
 The application should display a picture of a cat and a number of clicks.  
