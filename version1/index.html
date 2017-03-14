@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ver 1</title>
+    <style>
+        .app--wrapper {
+            text-align: center;
+        }
+        .pic--cat {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .h1, p {
+/*            text-align: center;*/
+        }
+    </style>
+</head>
+<body>
+   <div class="app--wrapper">
+       <img src="https://lh3.ggpht.com/nlI91wYNCrjjNy5f-S3CmVehIBM4cprx-JFWOztLk7vFlhYuFR6YnxcT446AvxYg4Ab7M1Fy0twaOCWYcUk=s0#w=640&h=426" alt="Picture of a cat" class="pic--cat" id="catPic">
+       <h1 class="h1">Click on a Cat</h1>
+       <p id="count">00</p>
+   </div>
+   
+   
+   
+   
+   
+   
+    <script>
+        const catPic = document.getElementById('catPic');
+        function counter() {
+            console.log(this);
+        }
+        catPic.addEventListener('click', counter);
+    </script>
+</body>
+</html>
