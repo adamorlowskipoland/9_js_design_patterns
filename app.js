@@ -74,6 +74,16 @@ var counter = 0;
 
 
 function clicksCounter() {
+    if (!nums[this.dataset.pic]) {
+        nums[this.dataset.pic] = 0;
+        console.log(nums[this.dataset.pic]);
+    }
+    counter = nums[this.dataset.pic];
+    counter++;
+    nums[this.dataset.pic] = counter;
+    console.log(counter);
+    console.log(nums);
+    
     cats.forEach(function(cat) {
         if (cat.classList.contains('cat__pic--active')) {
             var catCountP = cat.querySelector('.count');
@@ -87,7 +97,6 @@ function clicksCounter() {
             }
         }
     });
-    
 }
 
 
