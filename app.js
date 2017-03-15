@@ -1,3 +1,5 @@
+
+
 var nums = [];
 console.log(nums);
 
@@ -31,8 +33,31 @@ catPics.forEach(cat => cat.addEventListener('click', clicksCounter));
 
 
 
+// adding name
+const cats = document.querySelectorAll('.cat');
+var catName = "Soft(y)";
 
 
+function showName() {
+    cats.forEach(function(cat) {
+        if (cat.classList.contains('cat__pic--active')) {
+            var catNameP = cat.querySelector('.cat--name');
+            console.log(catNameP);
+            if(!catNameP) {
+                catNameP = document.createElement('p');
+                catNameP.classList.add('cat--name');
+                catNameP.textContent = catName;
+                cat.prepend(catNameP);
+                console.log("added child");
+            } else {
+                catNameP.textContent = catName;
+                console.log("changed name");
+            }
+
+        }
+    });
+    
+}
 
 
 
@@ -43,6 +68,7 @@ const catNames = document.querySelectorAll('.cat__name');
 const catImgs = Array.from(document.querySelectorAll('.cat'));
 
 function showCat() {
+    catName = this.textContent;
     catNames.forEach(function(e) {
         e.classList.remove('cat__name--active');
     });
@@ -56,7 +82,11 @@ function showCat() {
             catImgs[i].classList.add('cat__pic--active');
         }
     }
+    showName();
 }
 
+// showCat
 catNames.forEach(catName => catName.addEventListener('click', showCat));
-
+//
+//// showName
+showName();
