@@ -1,5 +1,4 @@
-# 9_js_design_patterns
-Cat clicker app
+# Cat clicker app
 
 Varsion 1  
 Project Requirements for Cat Clicker  
