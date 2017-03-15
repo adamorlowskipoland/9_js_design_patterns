@@ -16,6 +16,9 @@
 .list {
     display: inline-block;
 }
+.cat__name {
+    transition: all .3s;
+}
 
 .cats--wrapper {
     display: inline-block;
@@ -25,6 +28,7 @@
     display: inline-block;
     width: 90%;
     display: none;
+    transition: all 2s;
 }
 
 .cat__pic {
