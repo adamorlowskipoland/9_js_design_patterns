@@ -1,8 +1,3 @@
-
-
-
-
-
 // adding/changing name
 const cats = document.querySelectorAll('.cat');
 var catName = "Soft(y)";
@@ -24,9 +19,6 @@ function showName() {
     });
     
 }
-
-
-
 
 // slider
 
@@ -59,30 +51,22 @@ showName();
 
 
 
+// making countings
 
 var nums = [];
-console.log(nums);
-
-const catPics = document.querySelectorAll('.cat__pic');
-//const countPs = document.querySelectorAll('.count');
-
-console.log(catPics);
-console.log(cats);
-//console.log(countPs);
-
+const arrCatPics = Array.from(document.querySelectorAll('.cat__pic'));
 var counter = 0;
 
 
 function clicksCounter() {
-    if (!nums[this.dataset.pic]) {
-        nums[this.dataset.pic] = 0;
-        console.log(nums[this.dataset.pic]);
+    var inxOfThis = arrCatPics.indexOf(this);
+    
+    if (!nums[inxOfThis]) {
+        nums[inxOfThis] = 0;
     }
-    counter = nums[this.dataset.pic];
+    counter = nums[inxOfThis];
     counter++;
-    nums[this.dataset.pic] = counter;
-    console.log(counter);
-    console.log(nums);
+    nums[inxOfThis] = counter;
     
     cats.forEach(function(cat) {
         if (cat.classList.contains('cat__pic--active')) {
@@ -99,31 +83,4 @@ function clicksCounter() {
     });
 }
 
-
-
-
-//function clicksCounter() {
-//    
-//    console.log(this);
-//    
-//    var catPicsArray = Array.from(catPics);
-//    catPicsArray.forEach(function (catPic) {
-//        console.log(catPicsArray.indexOf(catPic));
-////        var indexCatpic = catPicsArray.indexOf(catPic);
-////        console.log(indexCatpic);
-//    })
-//    counter++;
-//    
-//    var p = countPs[this.dataset.pic];
-//    var pDataCount = p.dataset.count;
-//    nums[pDataCount] = counter;
-//    
-//    console.log(pDataCount);
-//    p.textContent = counter;
-////    console.log(p.dataset.count);
-//    
-//    console.log(counter);
-//    console.log(nums);
-//}
-
-catPics.forEach(cat => cat.addEventListener('click', clicksCounter));
+arrCatPics.forEach(cat => cat.addEventListener('click', clicksCounter));
