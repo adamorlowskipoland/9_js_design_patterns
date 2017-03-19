@@ -1,4 +1,4 @@
-// model
+// *==== model ====*
 
 const model = {
     currentCat: null,
@@ -35,98 +35,85 @@ const model = {
         },
         
     ]
-}
+};
 
 
 
-// octopus 
+// *==== octopus ====*
 
 const octopus = {
     init: function() {
         model.currentCat = model.cats[0];
-        console.log(model.currentCat);
-    }
-}
-
-
-
-//const octopus = {
-//    clicksCounter: function() {
-//        const cats = document.querySelectorAll('.cat');
-//        const arrCatPics = Array.from(document.querySelectorAll('.cat__pic'));
-//        var inxOfThis = arrCatPics.indexOf(this);
-//
-//        if (!model.nums[inxOfThis]) {
-//            model.nums[inxOfThis] = 0;
-//        }
-//        model.counter = model.nums[inxOfThis];
-//        model.counter++;
-//        model.nums[inxOfThis] = model.counter;
-//
-//        cats.forEach(function(cat) {
-//            if (cat.classList.contains('cat__pic--active')) {
-//                var catCountP = cat.querySelector('.count');
-//                if(!catCountP) {
-//                    catCountP = document.createElement('p');
-//                    catCountP.classList.add('count');
-//                    catCountP.textContent = model.counter;
-//                    cat.append(catCountP);
-//                } else {
-//                    catCountP.textContent = model.counter;
-//                }
-//            }
-//        });
-//    }
-//}
-
-
-// view
-
-const view = {
-    showName: function() {
-        const cats = document.querySelectorAll('.cat');
-        cats.forEach(function(cat) {
-            if (cat.classList.contains('cat__pic--active')) {
-                var catNameP = cat.querySelector('.cat--name');
-                if(!catNameP) {
-                    catNameP = document.createElement('p');
-                    catNameP.classList.add('cat--name');
-                    catNameP.textContent = catName;
-                    cat.prepend(catNameP);
-                } else {
-                    catNameP.textContent = catName;
-                }
-            }
-        });
+        viewCat.init();
+        viewCatList.init();
     },
-    showCat: function() {
-        const catNames = document.querySelectorAll('.cat__name');
-        const catImgs = Array.from(document.querySelectorAll('.cat'));
-        catName = this.textContent;
-        catNames.forEach(function(e) {
-            e.classList.remove('cat__name--active');
-        });
-        catImgs.forEach(function(e) {
-            e.classList.remove('cat__pic--active');
-        });
-        this.classList.add('cat__name--active');
-
-        for (var i=0; i<catImgs.length; i++) {
-            if (catImgs[i].dataset.cat === this.dataset.cat) {
-                catImgs[i].classList.add('cat__pic--active');
+    getCurrentCat: function() {
+        return model.currentCat;
+    },
+    getCat: function(elem) {
+        for (var i in model.cats) {
+            var cat = model.cats[i];
+            if (elem.textContent === cat.name) {
+                model.currentCat = cat;
+                viewCat.render();
             }
         }
-        view.showName();
+    },
+    getAllCats: function() {
+        return model.cats;
+    },
+    clickCounter: function() {
+        model.currentCat.counter++;
+        viewCat.render();
     },
     eventListeners: function() {
-        const catNames = document.querySelectorAll('.cat__name');
-        catNames.forEach(catName => catName.addEventListener('click', view.showCat));
+        const catsLi = document.querySelectorAll('.cat--li');
+        const catPic = document.getElementById('catPic');
         
-        const arrCatPics = Array.from(document.querySelectorAll('.cat__pic'));
-        arrCatPics.forEach(cat => cat.addEventListener('click', octopus.clicksCounter));
+        catsLi.forEach(function(cat) {            
+            cat.addEventListener('click', function() {
+                octopus.getCat(this);
+            });
+        })
+        catPic.addEventListener('click', function() {
+            octopus.clickCounter();
+        })
+    }
+};
+
+
+
+// *==== view ====*
+
+
+const viewCat = {
+    init: function() {
+        const catName = document.getElementById('catName');
+        const catPic = document.getElementById('catPic');
+        const catCounter = document.getElementById('catCounter');
+        
+        catName.textContent = octopus.getCurrentCat().name;
+        catPic.setAttribute("src", octopus.getCurrentCat().imgSrc);
+        catCounter.textContent = octopus.getCurrentCat().counter;
+    },
+    render: function() {
+        this.init();
+    }
+};
+
+const viewCatList = {
+    init: function() {
+        const catList = document.getElementById('catList');
+        const cats = octopus.getAllCats();
+        for (var i in cats) {
+            var cat = cats[i];
+            var catLi = document.createElement('li');
+            catLi.classList.add("cat--li")
+            catLi.textContent = cat.name;
+            catList.appendChild(catLi);
+        }
+        octopus.eventListeners();
     }
 }
-
-view.eventListeners();
-
 octopus.init();
+

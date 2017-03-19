@@ -7,41 +7,31 @@
 }
 .app--wrapper {
     text-align: center;
-}
-
-.cats--list {
-    display: inline-block;
-    width: 20%;
-}
-.list {
-    display: inline-block;
-}
-.cat__name {
-    transition: all .3s;
+    border: 1px solid black;
+    
 }
 
 .cats--wrapper {
     display: inline-block;
     width: 68%;
 }
-.cat {
-    display: inline-block;
-    width: 90%;
-    display: none;
-    transition: all 2s;
+
+#catList {
+    list-style: none;
+    padding-left:0;
+    margin-bottom: 2rem;
 }
 
-.cat__pic {
-    max-width: 40%;
+.cat--li {
+    padding: .3rem 0;
+}
+
+.cat--li:hover {
+    cursor: pointer;
+    background: skyblue;
+}
+
+#catPic {
     max-height: 40%;
-    border-radius: 1rem;
-}
-
-.cat__name--active {
-    color: darkred;
-    background: #ffc600;
-}
-
-.cat__pic--active {
-    display: inline-block;
+    max-width: 40%;
 }
