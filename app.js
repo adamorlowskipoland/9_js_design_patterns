@@ -75,18 +75,20 @@ const octopus = {
         if (catCounterUpdate || catImgUrlUpdate || catNnameUpdate) {
             if (catCounterUpdate && catCounterUpdate > 0) {
                 model.currentCat.counter = catCounterUpdate;
-                console.log(model.currentCat.counter);
             }
             if (catImgUrlUpdate) {
                 model.currentCat.imgSrc = catImgUrlUpdate;
-                console.log(model.currentCat.imgSrc);
             }
             if (catNnameUpdate) {
                 model.currentCat.name = catNnameUpdate;
-                console.log(model.currentCat.name);
             }
             viewCat.render();
             viewCatList.init();
+            
+            octopus.adminFormReset();
+            octopus.adminFormFlag = false;
+            
+            viewAdminForm.init();
         }
     },
     
@@ -97,7 +99,6 @@ const octopus = {
     },
     
     eventListeners: function() {
-        const catsLi = document.querySelectorAll('.cat--li');
         const catPic = document.getElementById('catPic');
         const btnAdmin = document.getElementById('btnAdmin');
         const btnCancel = document.getElementById('btnCancel');
@@ -105,14 +106,7 @@ const octopus = {
 //        const btnSubmit = document.getElementById('btnSubmit');
         const adminForm = document.getElementById('adminForm');
         
-        // on cat list name click
-        catsLi.forEach(function(cat) {            
-            cat.addEventListener('click', function() {
-                octopus.getCat(this);
-                octopus.adminFormFlag = false;
-                viewAdminForm.init();
-            });
-        });
+
         // on image click
         catPic.addEventListener('click', function() {
             octopus.clickCounter();
@@ -133,6 +127,17 @@ const octopus = {
         adminForm.addEventListener('submit', function(e) {
             e.preventDefault();
             octopus.adminCurrentCatUpdate();
+        });
+    },
+    catsLiEventListener: function() {
+        const catsLi = Array.from(document.getElementsByClassName('cat--li'));
+        // on cat list name click
+        catsLi.forEach(function(cat) {            
+            cat.addEventListener('click', function() {
+                octopus.getCat(this);
+                octopus.adminFormFlag = false;
+                viewAdminForm.init();
+            });
         });
     }
 };
@@ -173,6 +178,13 @@ const viewCatList = {
             catLi.textContent = cat.name;
             catList.appendChild(catLi);
         }
+        octopus.catsLiEventListener();
+    },
+    // when I have this after updating event listeners for clicks on img doubles up
+    // try putting eventListeners from octopus to view - check how it works in todoList App
+    
+    initListeners: function() {
+        octopus.eventListeners();
     }
 }
 
@@ -186,10 +198,13 @@ const viewAdminForm = {
         }
     }
 }
-octopus.init();
-octopus.eventListeners();
 
-
+    octopus.init();
+    viewCatList.initListeners();
+//(function IIWC() {
+//    octopus.init();
+//    viewCatList.initListeners();
+//})();
 
 //model.currentCat.name = "borys";
 //console.log(model.currentCat);
