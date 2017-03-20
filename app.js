@@ -70,9 +70,24 @@ const octopus = {
     
     adminCurrentCatUpdate: function() {
         var catCounterUpdate = parseInt(document.getElementById('catCounterUpdate').value);
-        model.currentCat.counter = catCounterUpdate;
-        viewCat.render();
-        console.log(model.currentCat.counter);
+        var catImgUrlUpdate = document.getElementById('catImgUrlUpdate').value;
+        var catNnameUpdate = document.getElementById('catNnameUpdate').value;
+        if (catCounterUpdate || catImgUrlUpdate || catNnameUpdate) {
+            if (catCounterUpdate && catCounterUpdate > 0) {
+                model.currentCat.counter = catCounterUpdate;
+                console.log(model.currentCat.counter);
+            }
+            if (catImgUrlUpdate) {
+                model.currentCat.imgSrc = catImgUrlUpdate;
+                console.log(model.currentCat.imgSrc);
+            }
+            if (catNnameUpdate) {
+                model.currentCat.name = catNnameUpdate;
+                console.log(model.currentCat.name);
+            }
+            viewCat.render();
+            viewCatList.init();
+        }
     },
     
     adminFormReset: function() {
@@ -158,7 +173,6 @@ const viewCatList = {
             catLi.textContent = cat.name;
             catList.appendChild(catLi);
         }
-        octopus.eventListeners();
     }
 }
 
@@ -173,6 +187,7 @@ const viewAdminForm = {
     }
 }
 octopus.init();
+octopus.eventListeners();
 
 
 
