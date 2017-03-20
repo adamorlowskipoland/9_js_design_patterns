@@ -6,19 +6,52 @@
     <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
+   
+   
     <h1 class="h1">Click on a Cat</h1>
     <div class="app--wrapper">
+       
+       
+<!--       cats list display area-->
         <ul id="catList">
             
         </ul>
+<!--        ====================-->
         
         
+<!--        cat display area-->
         <div class="cats--wrapper">
             <p id="catName"></p>
             <img src="" alt="" id="catPic">
             <p id="catCounter"></p>
         </div>
+        
+<!--        ====================-->
+        
+        
+<!--        admin display area-->
+        <div class="admin--wrapper">
+            <button id="btnAdmin">Adamin</button>
+            
+            <form action="none" class="admin--form" id="adminForm">
+                <label for="catNnameUpdate" class="form--label">Name</label>
+                <input type="text" id="catNnameUpdate" class="form--input">
+                <label for="catImgUrlUpdate" class="form--label">ImgURL</label>
+                <input type="text" id="catImgUrlUpdate" class="form--input">
+                <label for="catCounterUpdate" class="form--label">#Clicks</label>
+                <input type="text" id="catCounterUpdate" class="form--input">
+                
+                <button type="reset" id="btnCancel">Cancel</button>
+                <button type="submit" id="btnSubmite">Save</button>
+            </form>
+        </div>
+        
+<!--        ====================-->
+        
+        
     </div>
+    
+
    
    
     <script src="app.js"></script>

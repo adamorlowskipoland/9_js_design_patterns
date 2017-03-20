@@ -66,17 +66,31 @@ const octopus = {
         model.currentCat.counter++;
         viewCat.render();
     },
+    adminFormFlag: true,
+    
     eventListeners: function() {
         const catsLi = document.querySelectorAll('.cat--li');
         const catPic = document.getElementById('catPic');
+        const btnAdmin = document.getElementById('btnAdmin');
+        const btnCancel = document.getElementById('btnCancel');
         
         catsLi.forEach(function(cat) {            
             cat.addEventListener('click', function() {
                 octopus.getCat(this);
+                octopus.adminFormFlag = false;
+                viewAdminFrom.init();
             });
         })
         catPic.addEventListener('click', function() {
             octopus.clickCounter();
+        })
+        btnAdmin.addEventListener('click', function() {
+            octopus.adminFormFlag = true;
+            viewAdminFrom.init();
+        })
+        btnCancel.addEventListener('click', function() {
+            octopus.adminFormFlag = false;
+            viewAdminFrom.init();
         })
     }
 };
@@ -115,5 +129,20 @@ const viewCatList = {
         octopus.eventListeners();
     }
 }
+
+const viewAdminFrom = {
+    init: function() {
+        const adminForm = document.getElementById('adminForm');
+        if (octopus.adminFormFlag) {
+            adminForm.style.display = "block";
+        } else {
+            adminForm.style.display = "none";
+        }
+    }
+}
 octopus.init();
 
+
+
+//model.currentCat.name = "borys";
+//console.log(model.currentCat);

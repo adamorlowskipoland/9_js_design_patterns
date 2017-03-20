@@ -35,3 +35,15 @@
     max-height: 40%;
     max-width: 40%;
 }
+
+.admin--form {
+    border: 1px solid black;
+    display: none;
+}
+
+.form--label, .form--input {
+    display: block;
+    text-align: center;
+    margin: 1rem auto;
+/*    padding: 1rem;*/
+}
