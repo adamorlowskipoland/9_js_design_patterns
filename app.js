@@ -62,46 +62,19 @@ const octopus = {
     getAllCats: function() {
         return model.cats;
     },
-    clickCounter: function(updateVal) {
-        if (updateVal) {
-            octopus.getCurrentCat().counter = updateVal;
-        } else {
-            octopus.getCurrentCat().counter++;    
-        }
+    clickCounter: function() {
+        octopus.getCurrentCat().counter++;
         viewCat.render();
     },
     adminFormFlag: true,
     
     adminCurrentCatUpdate: function() {
-        debugger;
-        var catNnameUpdate = document.getElementById('catNnameUpdate').value;
-        var catImgUrlUpdate = document.getElementById('catImgUrlUpdate').value;
         var catCounterUpdate = parseInt(document.getElementById('catCounterUpdate').value);
-        
-        if (catNnameUpdate) {
-            octopus.getCurrentCat().name = catNnameUpdate;
-            console.log("new cat name " +catNnameUpdate);
-            
-        }
-        if (catImgUrlUpdate) {
-            octopus.getCurrentCat().imgSrc = catImgUrlUpdate;
-            console.log("new cat url " + catImgUrlUpdate);
-            
-            
-        }
-        if (catCounterUpdate) {
-            octopus.clickCounter(catCounterUpdate);
-            
-            
-        }
-        if (catNnameUpdate || catImgUrlUpdate || catCounterUpdate) {
-            octopus.adminFormFlag = false;
-            octopus.adminFormReset();
-        }
+        model.currentCat.counter = catCounterUpdate;
         viewCat.render();
-        viewCatList.init();
-        viewAdminForm.init();
+        console.log(model.currentCat.counter);
     },
+    
     adminFormReset: function() {
         document.getElementById('catNnameUpdate').value = "";
         document.getElementById('catImgUrlUpdate').value = "";
@@ -126,11 +99,11 @@ const octopus = {
             });
         });
         // on image click
-        catPic.addEventListener('click', function(e) {
-            
-            e.preventDefault();
+        catPic.addEventListener('click', function() {
             octopus.clickCounter();
         });
+        
+        
         // on admin btn click
         btnAdmin.addEventListener('click', function() {
             octopus.adminFormFlag = true;
@@ -145,7 +118,7 @@ const octopus = {
         adminForm.addEventListener('submit', function(e) {
             e.preventDefault();
             octopus.adminCurrentCatUpdate();
-        })
+        });
     }
 };
 
@@ -166,6 +139,9 @@ const viewCat = {
     },
     render: function() {
         this.init();
+    },
+    displayUpdatedCat: function() {
+        
     }
 };
 

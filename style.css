@@ -14,6 +14,7 @@
 .cats--wrapper {
     display: inline-block;
     width: 68%;
+    border: 1px solid black;
 }
 
 #catList {
@@ -34,6 +35,17 @@
 #catPic {
     max-height: 40%;
     max-width: 40%;
+}
+
+.admin--wrapper {
+/*    border: 1px solid black;*/
+    
+}
+
+.btn--admin {
+    border: 1px solid black;
+    margin: 1rem;
+    
 }
 
 .admin--form {
