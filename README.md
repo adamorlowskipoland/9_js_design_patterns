@@ -94,6 +94,10 @@ Interaction
 - When the admin button is clicked, the admin area should appear with the inputs filled in for the currently-selected cat.  
 - When the cancel button in the admin area is pressed, the admin area disappears.  
 - When the save button in the admin area is pressed, the currently-selected cat's values update with the values in the admin area, and the admin area disappears.  
-
-
-
+  
+  
+  
+Preview for app:  
+https://adamorlowskipoland.github.io/catClickerTask/  
+  
+Design is not finished yet ;-) 
