@@ -1,4 +1,5 @@
-ud989-cat-clicker-ko-starter
-============================
-
-ud989-cat-clicker-ko-starter
+Building catClicker with KnockOut tutorial  
+  
+  
+Preview of this:  
+https://github.com/adamorlowskipoland/catClickerTask/blob/catClicker_with_KO/KnockOut_catClicker/index.html  
